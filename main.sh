@@ -4,9 +4,10 @@ if [ ! -f "alist" ];then
   tar -zxvf alist.tar.gz
   rm -f alist.tar.gz
 else
-  if [ ! -f "data.db" ];then
+  if [ ! -f "data.db2" ];then
   cp data.db ../data.db
-  rm -f data.db
+  cp data.db data.db2
+  #rm -f data.db
   sed -i "s#data\\/data.db#..\\/data\\/data.db#g" ./data/config.json
   fi
 fi
