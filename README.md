@@ -1,52 +1,13 @@
-# alist-replit
+# 部署
 
-The fastest way to deploy the alist to `repl.it` is to click the `run on repl.it` button below.
+点击下方 `run on repl.it` 按钮，将alist快速部署到`repl.it`。
 
 <a href="https://repl.it/github/liuzhiwei90/alist-replit-sqlite">
   <img alt="Run on Repl.it" src="https://repl.it/badge/github/liuzhiwei90/alist-replit-sqlite" style="height: 40px; width: 190px;" />
 </a>
 
-## Database
-You may need to use another remote MySQL/Postgres database as local sqlite3 is public for everyone. Some Free MySQL/Postgres Databases:
+部署后需要运行两次，第一次使用默认配置自动生成随机密码，第二次修改数据库位置到上级目录使数据库不公开，使用固定密码“password”。
 
-- https://db4free.net/
-- https://remotemysql.com/
-- https://www.freesqldatabase.com/
-- https://planetscale.com/
-- https://bit.io/
-- https://www.elephantsql.com/
-- https://scalingo.com/
-- http://cloud.yugabyte.com/
+## 说明
 
-How to change the database?
-> Switch to `secrets` tab then edit `System environment variables`.You can also edit raw json:
-> ```json
-> {
->   "DB_TYPE":"mysql",
->   "DB_HOST":"sql.com",
->   "DB_PORT":"3306",
->   "DB_USER":"alist",
->   "DB_PASS":"password",
->   "DB_NAME":"alist",
->   "DB_TABLE_PREFIX":"alist_",
->   "DB_SSL_MODE":"true"
-> }
-> ```
-> The secrets is private so you don't need to worry about leaking your data.
-
-### Sample Config https://bit.io/
-> ```json
-> {
->   "DB_TYPE": "postgres",
->   "DB_HOST": "db.bit.io",
->   "DB_PORT": "5432",
->   "DB_USER": "user",
->   "DB_PASS": "password",
->   "DB_NAME": "user/alist",
->   "DB_TABLE_PREFIX": "alist_",
->   "DB_SSL_MODE": "require"
-> }
-> ```
-
-## Password
-The initial password is randomly generated, and you can get it by checking the console logs.
+需要把数据库的下载链接配置到环境变量，当数据库被删除的时候通过链接重新下载。可以添加一个onedrive存储用来备份数据库，再通过另一个列表程序获取数据库的下载链接，比如OneManager。
