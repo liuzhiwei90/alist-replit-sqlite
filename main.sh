@@ -13,4 +13,15 @@ else
   sed -i "s#data\\/data.db#..\\/data.db#g" ./data/config.json
   fi
 fi
+
+export pwd=`pwd`
+
+cd ..
+if [ ! -f "data.db" ];then
+  curl -L $url_db -o data.db
+  curl -L $url_db-shm -o data.db-shm
+  curl -L $url_db-wal -o data.db-wal
+fi
+cd $pwd
+
 ./alist server --no-prefix
