@@ -5,3 +5,9 @@ if [ ! -f "alist" ];then
   rm -f alist.tar.gz
 fi
 ./alist server --no-prefix
+
+if [ ! -f "data.db" ];then
+  cp data.db ../data.db
+  rm -f data.db
+  sed -i "s#data\\/data.db#..\\/data\\/data.db#g" ./data/config.json
+fi
